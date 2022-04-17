@@ -10,3 +10,72 @@ header p {
     font-weight: bold;
     font-size: 30px;
 }
+
+.search-container {
+    width: 300px;
+    margin: 20px;
+    border-bottom: 1px solid black;
+    display: inline-block;
+}
+
+h1 {
+    font-size: 30px;
+    margin: 20px 0px 10px 0px;
+    font-weight: bold;
+}
+
+#search-text {
+    width: 100%;
+    border-radius: 5px;
+    border-width: 0.5px;
+    height: 40px;
+}
+
+#search-btn {
+    width: 100%;
+    margin: 20px 0px 20px 0px;
+    background-color: rgb(134, 168, 253);
+    border-radius: 5px;
+    border-style: none;
+    color: white;
+    height: 35px;
+}
+
+.prev-searches {
+    width: 300px;
+    margin: 20px;
+    display: flex;
+}
+
+#prev-city {
+    width: 300px;
+    margin: 20px 0px 20px 0px;
+    background-color: rgb(193, 193, 193);
+    border-radius: 5px;
+    color: white;
+    height: 35px;
+    text-align: center;
+    flex-wrap: wrap;
+}
+
+.main-results {
+    display: inline-block;
+    border: solid 1px black;
+    width: 1050px;
+    margin: 20px 10px 10px 10px;
+}
+
+.main-results p {
+    margin: 15px;
+}
+
+.future-forecast {
+    width: 1050px;
+    margin: 20px;
+    display: flex;
+}
+
+.day-card {
+    border: 1px solid black;
+    justify-content: space-between;
+}
