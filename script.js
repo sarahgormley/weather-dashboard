@@ -13,7 +13,7 @@ var currentDate = moment().format("MMM Do, YYYY");
 
 
 function handleFormSubmit(form) {
-    const cityName = form.querySelector("#search-text").value;
+    var cityName = form.querySelector("#search-text").value;
     getCity(cityName);
 }
 // function to get the selected city from the search bar
