@@ -44,7 +44,7 @@ h1 {
 .prev-searches {
     width: 300px;
     margin: 20px;
-    display: flex;
+    display: inline;
 }
 
 #prev-city {
@@ -55,14 +55,13 @@ h1 {
     color: white;
     height: 35px;
     text-align: center;
-    flex-wrap: wrap;
 }
 
 .main-results {
     display: inline-block;
     border: solid 1px black;
     width: 1050px;
-    margin: 20px 10px 10px 10px;
+    margin-left: 350px;
 }
 
 .main-results p {
@@ -71,11 +70,31 @@ h1 {
 
 .future-forecast {
     width: 1050px;
-    margin: 20px;
+    margin-left: 350px;
     display: flex;
 }
 
 .day-card {
     border: 1px solid black;
-    justify-content: space-between;
+    width: 150px;
+    justify-content: space-around;
+    padding: 10px;
+}
+
+#green-UV {
+    background-color: green;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+#yellow-UV {
+    background-color: yellow;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+#red-UV {
+    background-color: red;
+    padding: 5px;
+    border-radius: 5px;
 }
