@@ -12,19 +12,22 @@ var currentDate = moment().format("MMM Do, YYYY");
 
 
 
-function handleFormSubmit(form) {
-    var cityName = form.querySelector("#search-text").value;
+function handleFormSubmit(event) { //Change the parameter to represent the event object that will be passed
+    var cityName = document.querySelector("#search-text").value; //change form ==> document so you can select the text value
     getCity(cityName);
 }
+
 // function to get the selected city from the search bar
 
 function getCity(cityName) {
     let requestURL = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${apiKey}`;
-    fetch(requestURL).then(function(response) {
-            console.log(cityName)
-        }
+    fetch(requestURL)
+        .then(function(response) {
+            console.log(requestURL)
+        });
 
-    )
 }
 
-searchBtn.addEventListener("click", getCity)
+
+
+searchBtn.addEventListener("click", handleFormSubmit)
