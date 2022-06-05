@@ -69,12 +69,22 @@ h1 {
     margin-right: 50px;
 }
 
-#city-name {
-    margin: 15px;
+#search-city-name {
+    margin-left: 10px;
+    padding: 10px;
+}
+
+img {
+    width: 50px;
 }
 
 .main-results p {
     margin: 15px;
+}
+
+#current-day {
+    font-size: 20px;
+    text-decoration: underline;
 }
 
 .future-forecast {

@@ -16,7 +16,7 @@
     </header>
     <main>
         <aside class="side-bar">
-            <form class="search-container" action="#" onsubmit="event.preventDefault();handleFormSubmit(this);">
+            <form class="search-container" action="#">
                 <h1>Search For A City:</h1>
                 <input id="search-text" type="text" placeholder="Input City Name">
                 <button id="search-btn"> Search </button>
@@ -31,11 +31,11 @@
         </aside>
         <section class="current-results">
             <div class="main-results">
-                <h1><span id="city-name"></span><span id="currentDay"></span><span id="weather-icon"></span></h1>
+                <h1><span id="search-city-name"></span><span id="current-day"></span><span id="weather-icon"></span></h1>
                 <p>Temperature: <span id="temperature"></span></p>
                 <p>Wind: <span id="wind"></span></p>
                 <p>Humidity: <span id="humidity"></span></p>
-                <p><span id="uvIndex"></span></p>
+                <p>UV Index: <span id="uvIndex"></span></p>
             </div>
             <div class="future-forecast">
 
