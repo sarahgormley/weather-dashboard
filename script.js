@@ -60,6 +60,8 @@ function getUVIndex(latitude, longitude) {
     fetch(uvURL)
         .then(function(index) {
             index.json().then(function(data) {
+                displayFiveDay(data);
+
                 console.log(data)
                 if (data.value < 4) {
                     currentUVIndex.setAttribute("id", "green-UV");
@@ -73,4 +75,20 @@ function getUVIndex(latitude, longitude) {
 
             })
         })
+}
+
+function displayFiveDay(cityName) {
+    var apiURL = "https://api.openweathermap.org/data/2.5/forecast?lat=" + latitude + "&lon=" + longitude + "&appid=" + apiKey;
+    fetch(apiURL)
+        .then(function(response) {
+            response.json().then(function(data) {
+                console.log(data);
+
+            })
+        });
+
+}
+
+function displayStoredCities(ls) {
+
 }
