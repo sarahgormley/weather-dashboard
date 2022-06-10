@@ -62,14 +62,12 @@ function displayCityData(data) {
 }
 
 function getUVIndex(latitude, longitude) {
-    console.log(latitude, longitude)
     let uvURL = "https://api.openweathermap.org/data/2.5/uvi?appid=" + apiKey + "&lat=" + latitude + "&lon=" + longitude;
     fetch(uvURL)
         .then(function(index) {
             index.json().then(function(data) {
                 displayFiveDay(data);
 
-                console.log(data)
                 if (data.value < 4) {
                     currentUVIndex.setAttribute("id", "green-UV");
                 } else if (data.value < 8) {
@@ -100,6 +98,7 @@ function displayFiveDay(cityName) {
 function saveSearchedCity(searchedCity) {
 
     var lsCity = localStorage.getItem("searchedCities");
+
     var arrayCity;
 
     if (!lsCity) {
@@ -112,5 +111,20 @@ function saveSearchedCity(searchedCity) {
 
     var cityString = JSON.stringify(arrayCity)
     window.localStorage.setItem("searchedCities", cityString);
+
+
+    if (arrayCity.length === 0) {
+        console.log("Please search a city to start.")
+    } else {
+        for (var i = 0; i < arrayCity.length; i++) {
+            console.log(arrayCity)
+            var prevBtn = document.createElement("button");
+            prevBtn.classList.add("prev-city-btn")
+            prevBtn.value = arrayCity;
+            prevBtn.textContent = arrayCity;
+
+
+        }
+    }
 
 }
