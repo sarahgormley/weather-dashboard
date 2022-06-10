@@ -2,12 +2,15 @@ var apiKey = "74b589766e2c1c1f69016c5e5740ff80";
 var searchBtn = document.getElementById("search-btn");
 var cityName = document.getElementById("search-text");
 var searchCityName = document.getElementById("search-city-name");
+var prevSearches = document.getElementById("prev-searches")
+var prevCityBtn = document.getElementById("prev-city-btn");
 var temperature = document.getElementById("temperature");
 var wind = document.getElementById("wind");
 var humidity = document.getElementById("humidity");
 var currentUVIndex = document.getElementById("uvIndex");
 var weatherIcon = document.getElementById("weather-icon");
 var currentDay = document.getElementById("current-day");
+
 
 var currentDate = moment().format("MMM Do, YYYY");
 
@@ -16,17 +19,21 @@ function pageinit() {
 }
 searchBtn.addEventListener('click', function() {
     getCity(cityName)
+
 })
 
 // function to get the selected city from the search bar
 
 function getCity(cityName) {
-    let requestURL = "https://api.openweathermap.org/data/2.5/weather?q=" + cityName.value + "&units=metric&appid=" + apiKey;
+    event.preventDefault();
+    var searchedCity = cityName.value;
+    let requestURL = "https://api.openweathermap.org/data/2.5/weather?q=" + searchedCity + "&units=metric&appid=" + apiKey;
     fetch(requestURL)
         .then(function(response) {
             response.json().then(function(data) {
                 console.log(data);
                 displayCityData(data);
+                saveSearchedCity(searchedCity);
             })
         });
 
@@ -78,17 +85,32 @@ function getUVIndex(latitude, longitude) {
 }
 
 function displayFiveDay(cityName) {
-    var apiURL = "https://api.openweathermap.org/data/2.5/forecast?lat=" + latitude + "&lon=" + longitude + "&appid=" + apiKey;
-    fetch(apiURL)
-        .then(function(response) {
-            response.json().then(function(data) {
-                console.log(data);
+    // var apiURL = "https://api.openweathermap.org/data/2.5/forecast?lat=" + latitude + "&lon=" + longitude + "&appid=" + apiKey;
+    // fetch(apiURL)
+    ///   .then(function(response) {
+    //       response.json().then(function(data) {
+    //          console.log(data);
 
-            })
-        });
+    //      })
+    //   });
+    console.log("test")
 
 }
 
-function displayStoredCities(ls) {
+function saveSearchedCity(searchedCity) {
+
+    var lsCity = localStorage.getItem("searchedCities");
+    var arrayCity;
+
+    if (!lsCity) {
+        arrayCity = [];
+    } else {
+        arrayCity = JSON.parse(lsCity)
+    };
+
+    arrayCity.push(searchedCity);
+
+    var cityString = JSON.stringify(arrayCity)
+    window.localStorage.setItem("searchedCities", cityString);
 
 }

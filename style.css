@@ -47,7 +47,7 @@ h1 {
     height: 35px;
 }
 
-#prev-city {
+#prev-city-btn {
     width: 300px;
     margin: 20px 0px 20px 20px;
     background-color: rgb(193, 193, 193);
@@ -59,14 +59,15 @@ h1 {
 
 .current-results {
     float: right;
+    margin-top: 70px;
+    margin-right: 50px;
+    width: 1000px;
 }
 
 .main-results {
     border: solid 1px black;
     width: 1000px;
     float: right;
-    margin-top: -410px;
-    margin-right: 50px;
 }
 
 #search-city-name {
@@ -91,9 +92,8 @@ img {
     width: 1000px;
     float: right;
     display: flex;
-    margin-top: -110px;
-    margin-right: 50px;
     justify-content: space-between;
+    padding-top: 20px;
 }
 
 .day-card {
