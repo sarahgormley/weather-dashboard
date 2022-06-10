@@ -3,7 +3,7 @@ var searchBtn = document.getElementById("search-btn");
 var cityName = document.getElementById("search-text");
 var searchCityName = document.getElementById("search-city-name");
 var prevSearches = document.getElementById("prev-searches")
-var prevCityBtn = document.getElementById("prev-city-btn");
+var prevCityBtn = document.getElementsByClassName("prev-city-btn");
 var temperature = document.getElementById("temperature");
 var wind = document.getElementById("wind");
 var humidity = document.getElementById("humidity");
@@ -121,8 +121,8 @@ function saveSearchedCity(searchedCity) {
             var prevBtn = document.createElement("button");
             prevBtn.classList.add("prev-city-btn")
             prevBtn.value = arrayCity;
-            prevBtn.textContent = arrayCity;
-
+            prevBtn.textContent = arrayCity[i];
+            prevSearches.append(prevBtn)
 
         }
     }

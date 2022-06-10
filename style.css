@@ -47,10 +47,11 @@ h1 {
     height: 35px;
 }
 
-#prev-city-btn {
-    width: 300px;
-    margin: 20px 0px 20px 20px;
+.prev-city-btn {
+    width: 100%;
+    margin: 10px 0px 0px 20px;
     background-color: rgb(193, 193, 193);
+    border-style: none;
     border-radius: 5px;
     color: white;
     height: 35px;
