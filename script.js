@@ -20,14 +20,14 @@ function pageinit() {
     getPrevCities()
 }
 searchBtn.addEventListener('click', function() {
-    getCity(cityName)
+    getCity(cityName.value)
 
 })
 
 // function to get the selected city from the search bar
 
-function getCity(cityName) {
-    var searchedCity = cityName.value;
+function getCity(city) {
+    var searchedCity = city;
     let requestURL = "https://api.openweathermap.org/data/2.5/weather?q=" + searchedCity + "&units=metric&appid=" + apiKey;
     fetch(requestURL)
         .then(function(response) {
@@ -103,6 +103,7 @@ function saveSearchedCity(searchedCity) {
 
     if (arrayCity.length === 0) {
         console.log("Please search a city to start.")
+        prevSearches.innerHTML = ""
     } else {
         for (var i = 0; i < arrayCity.length; i++) {
 
@@ -113,9 +114,11 @@ function saveSearchedCity(searchedCity) {
             prevSearches.append(prevBtn);
 
 
+            prevBtn.addEventListener("click", function(event) {
+                getCity(event.target.textContent)
+            })
+
         }
-        prevBtn.addEventListener("click", function() {
-            getCity(arrayCity)
-        })
+
     }
-}
+};
