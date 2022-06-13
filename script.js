@@ -66,7 +66,6 @@ function getUVIndex(latitude, longitude) {
     fetch(uvURL)
         .then(function(index) {
             index.json().then(function(data) {
-                displayFiveDay(data);
 
                 if (data.value < 4) {
                     currentUVIndex.setAttribute("id", "green-UV");
@@ -106,7 +105,7 @@ function saveSearchedCity(searchedCity) {
         console.log("Please search a city to start.")
     } else {
         for (var i = 0; i < arrayCity.length; i++) {
-            console.log(arrayCity)
+
             var prevBtn = document.createElement("button");
             prevBtn.classList.add("prev-city-btn")
             prevBtn.value = arrayCity;
