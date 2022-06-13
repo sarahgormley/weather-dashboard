@@ -10,6 +10,8 @@ var humidity = document.getElementById("humidity");
 var currentUVIndex = document.getElementById("uvIndex");
 var weatherIcon = document.getElementById("weather-icon");
 var currentDay = document.getElementById("current-day");
+var dayCard = document.getElementsByClassName("day-card");
+var fiveDate = document.getElementById("date");
 
 
 var currentDate = moment().format("MMM Do, YYYY");
@@ -25,7 +27,6 @@ searchBtn.addEventListener('click', function() {
 // function to get the selected city from the search bar
 
 function getCity(cityName) {
-    event.preventDefault();
     var searchedCity = cityName.value;
     let requestURL = "https://api.openweathermap.org/data/2.5/weather?q=" + searchedCity + "&units=metric&appid=" + apiKey;
     fetch(requestURL)
@@ -57,7 +58,6 @@ function displayCityData(data) {
     currentWeatherIcon.setAttribute("src", "https://openweathermap.org/img/wn/" + data.weather[0].icon + "@2x.png");
     weatherIcon.appendChild(currentWeatherIcon);
 
-
     getUVIndex(latitude, longitude);
 }
 
@@ -82,18 +82,7 @@ function getUVIndex(latitude, longitude) {
         })
 }
 
-function displayFiveDay(cityName) {
-    // var apiURL = "https://api.openweathermap.org/data/2.5/forecast?lat=" + latitude + "&lon=" + longitude + "&appid=" + apiKey;
-    // fetch(apiURL)
-    ///   .then(function(response) {
-    //       response.json().then(function(data) {
-    //          console.log(data);
 
-    //      })
-    //   });
-    console.log("test")
-
-}
 
 function saveSearchedCity(searchedCity) {
 
@@ -122,9 +111,12 @@ function saveSearchedCity(searchedCity) {
             prevBtn.classList.add("prev-city-btn")
             prevBtn.value = arrayCity;
             prevBtn.textContent = arrayCity[i];
-            prevSearches.append(prevBtn)
+            prevSearches.append(prevBtn);
+
 
         }
+        prevBtn.addEventListener("click", function() {
+            getCity(arrayCity)
+        })
     }
-
 }
