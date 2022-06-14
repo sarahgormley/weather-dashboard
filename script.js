@@ -3,7 +3,6 @@ var searchBtn = document.getElementById("search-btn");
 var cityName = document.getElementById("search-text");
 var searchCityName = document.getElementById("search-city-name");
 var prevSearches = document.getElementById("prev-searches")
-var prevCityBtn = document.getElementsByClassName("prev-city-btn");
 var temperature = document.getElementById("temperature");
 var wind = document.getElementById("wind");
 var humidity = document.getElementById("humidity");
@@ -12,6 +11,10 @@ var weatherIcon = document.getElementById("weather-icon");
 var currentDay = document.getElementById("current-day");
 var dayCard = document.getElementsByClassName("day-card");
 var fiveDate = document.getElementById("date");
+var futureDate = document.getElementById("futureDate");
+var futureTemperature = document.getElementById("futureTemperature");
+var futureWind = document.getElementById("futureWind");
+var futureHumidity = document.getElementById("futureHumidity");
 
 
 var currentDate = moment().format("MMM Do, YYYY");
@@ -32,7 +35,6 @@ function getCity(city) {
     fetch(requestURL)
         .then(function(response) {
             response.json().then(function(data) {
-                console.log(data);
                 displayCityData(data);
                 saveSearchedCity(searchedCity);
             })
@@ -58,7 +60,26 @@ function displayCityData(data) {
     currentWeatherIcon.setAttribute("src", "https://openweathermap.org/img/wn/" + data.weather[0].icon + "@2x.png");
     weatherIcon.appendChild(currentWeatherIcon);
 
+
+
+
+    getFiveDayForecast();
     getUVIndex(latitude, longitude);
+}
+
+function getFiveDayForecast(data) {
+    var futureForecast = document.getElementsByClassName("future-forecast");
+
+    for (let i = 1; i < 6; i++) {
+        var date = moment().add(+i, 'days').format('DD-MM-YYYY');
+        console.log(date)
+        var dailyWeather = document.createElement("div");
+        dailyWeather.classList.add("day-card");
+        dailyWeather.append(futureForecast);
+
+
+
+    }
 }
 
 function getUVIndex(latitude, longitude) {
@@ -80,7 +101,6 @@ function getUVIndex(latitude, longitude) {
             })
         })
 }
-
 
 
 function saveSearchedCity(searchedCity) {
@@ -112,8 +132,6 @@ function saveSearchedCity(searchedCity) {
             prevBtn.value = arrayCity;
             prevBtn.textContent = arrayCity[i];
             prevSearches.append(prevBtn);
-
-
             prevBtn.addEventListener("click", function(event) {
                 getCity(event.target.textContent)
             })
