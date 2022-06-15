@@ -1,3 +1,4 @@
+// Variables 
 var apiKey = "74b589766e2c1c1f69016c5e5740ff80";
 var searchBtn = document.getElementById("search-btn");
 var cityName = document.getElementById("search-text");
@@ -9,26 +10,25 @@ var humidity = document.getElementById("humidity");
 var currentUVIndex = document.getElementById("uvIndex");
 var weatherIcon = document.getElementById("weather-icon");
 var currentDay = document.getElementById("current-day");
-var dayCard = document.getElementsByClassName("day-card");
-var fiveDate = document.getElementById("date");
 var futureDate = document.getElementById("futureDate");
 var futureTemperature = document.getElementById("futureTemperature");
 var futureWind = document.getElementById("futureWind");
 var futureHumidity = document.getElementById("futureHumidity");
 
-
+// Get the current date
 var currentDate = moment().format("MMM Do, YYYY");
 
+// Initialise the page
 function pageinit() {
     getPrevCities()
 }
+// Event listener for search button. Adds the value of the searched city into the getCity function
 searchBtn.addEventListener('click', function() {
     getCity(cityName.value)
 
 })
 
-// function to get the selected city from the search bar
-
+// Function to get the searched city into the API call
 function getCity(city) {
     var searchedCity = city;
     let requestURL = "https://api.openweathermap.org/data/2.5/weather?q=" + searchedCity + "&units=metric&appid=" + apiKey;
@@ -42,6 +42,7 @@ function getCity(city) {
 
 };
 
+// Function to get the data from the API and add it to the required areas
 function displayCityData(data) {
     var searchedCityName = data.name;
     var cityTemp = data.main.temp;
@@ -60,13 +61,11 @@ function displayCityData(data) {
     currentWeatherIcon.setAttribute("src", "https://openweathermap.org/img/wn/" + data.weather[0].icon + "@2x.png");
     weatherIcon.appendChild(currentWeatherIcon);
 
-
-
-
     getFiveDayCity(latitude, longitude);
     getUVIndex(latitude, longitude);
 }
 
+// API call for the next five day forecast
 function getFiveDayCity(latitude, longitude) {
     let apiURL = "https://api.openweathermap.org/data/2.5/onecall?lat=" + latitude + "&lon=" + longitude + "&exclude=current,minutely,hourly,alerts&units=metric&appid=" + apiKey
     fetch(apiURL)
@@ -79,6 +78,7 @@ function getFiveDayCity(latitude, longitude) {
 
 }
 
+// Function to get the data from the next five day forecast and append it to the cards
 function getFiveDayForecast(data) {
     console.log(data)
 
@@ -123,6 +123,7 @@ function getFiveDayForecast(data) {
     }
 }
 
+// Function to get the UV index and show the specified colour based on the UV index
 function getUVIndex(latitude, longitude) {
     let uvURL = "https://api.openweathermap.org/data/2.5/uvi?appid=" + apiKey + "&lat=" + latitude + "&lon=" + longitude;
     fetch(uvURL)
@@ -143,7 +144,7 @@ function getUVIndex(latitude, longitude) {
         })
 }
 
-
+// Function to save the searched cities to local storage
 function saveSearchedCity(searchedCity) {
 
     var lsCity = localStorage.getItem("searchedCities");
