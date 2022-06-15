@@ -30,6 +30,12 @@ h1 {
     font-weight: bold;
 }
 
+h3 {
+    font-size: 25px;
+    text-decoration: underline;
+    margin-bottom: 15px;
+}
+
 #search-text {
     width: 100%;
     border-radius: 5px;
@@ -99,7 +105,7 @@ img {
 
 .day-card {
     border: 1px solid black;
-    width: 150px;
+    width: 180px;
     justify-content: space-around;
     padding: 10px;
     color: white;

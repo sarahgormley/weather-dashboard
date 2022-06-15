@@ -63,15 +63,30 @@ function displayCityData(data) {
 
 
 
-    getFiveDayForecast();
+    getFiveDayCity(latitude, longitude);
     getUVIndex(latitude, longitude);
 }
 
+function getFiveDayCity(latitude, longitude) {
+    let apiURL = "https://api.openweathermap.org/data/2.5/onecall?lat=" + latitude + "&lon=" + longitude + "&exclude=current,minutely,hourly,alerts&units=metric&appid=" + apiKey
+    fetch(apiURL)
+        .then(function(response) {
+            response.json().then(function(data) {
+                getFiveDayForecast(data);
+
+            })
+        });
+
+}
+
 function getFiveDayForecast(data) {
+    console.log(data)
+
     var futureForecast = document.getElementById("future-forecast");
 
     for (let i = 1; i < 6; i++) {
-        var date = moment().add(+i, 'days').format('DD-MM-YYYY');
+
+        var date = moment().add(+i, 'days').format('DD-MM-YY');
         console.log(date)
         var dailyWeather = document.createElement("div");
         dailyWeather.classList.add("day-card");
@@ -80,27 +95,31 @@ function getFiveDayForecast(data) {
         var dayWeather = document.createElement("h3");
         dayWeather.setAttribute("id", "futureDate");
         dailyWeather.append(dayWeather)
-        dayWeather.innerHTML = "date";
+        dayWeather.innerHTML = date;
+
+        var dayWeatherIcon = document.createElement("img");
+        dayWeatherIcon.setAttribute("src", "https://openweathermap.org/img/wn/" + data.daily[i].weather[0].icon + "@2x.png");
+        dailyWeather.append(dayWeatherIcon);
 
         var dayTemp = document.createElement("p");
         dayTemp.setAttribute("id", "futureTemperature");
         dailyWeather.append(dayTemp);
-        dayTemp.innerHTML = "testTemp";
+        dayTemp.innerHTML = "Temp:  " + avgTemp + "°C";
 
         var dayWind = document.createElement("p");
         dayWind.setAttribute("id", "futureWind");
         dailyWeather.append(dayWind);
-        dayWind.innerHTML = "testWind";
+        dayWind.innerHTML = "Wind:  " + avgWind + "km/h";
 
         var dayHumid = document.createElement("p");
         dayHumid.setAttribute("id", "futureHumidity");
         dailyWeather.append(dayHumid);
-        dayHumid.innerHTML = "testHum";
+        dayHumid.innerHTML = "Humidity: " + avgHumidity + "%";
 
 
-        // futureTemperature.innerHTML
-        //  futureWind.innerHTML
-        // futureHumidity.innerHTML
+        var avgTemp = data.daily[i].temp.day;
+        var avgWind = data.daily[i].wind_speed;
+        var avgHumidity = data.daily[i].humidity;
     }
 }
 
