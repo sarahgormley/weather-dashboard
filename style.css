@@ -89,7 +89,7 @@ img {
     text-decoration: underline;
 }
 
-.future-forecast {
+#future-forecast {
     width: 1000px;
     float: right;
     display: flex;

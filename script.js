@@ -68,17 +68,39 @@ function displayCityData(data) {
 }
 
 function getFiveDayForecast(data) {
-    var futureForecast = document.getElementsByClassName("future-forecast");
+    var futureForecast = document.getElementById("future-forecast");
 
     for (let i = 1; i < 6; i++) {
         var date = moment().add(+i, 'days').format('DD-MM-YYYY');
         console.log(date)
         var dailyWeather = document.createElement("div");
         dailyWeather.classList.add("day-card");
-        dailyWeather.append(futureForecast);
+        futureForecast.append(dailyWeather);
+
+        var dayWeather = document.createElement("h3");
+        dayWeather.setAttribute("id", "futureDate");
+        dailyWeather.append(dayWeather)
+        dayWeather.innerHTML = "date";
+
+        var dayTemp = document.createElement("p");
+        dayTemp.setAttribute("id", "futureTemperature");
+        dailyWeather.append(dayTemp);
+        dayTemp.innerHTML = "testTemp";
+
+        var dayWind = document.createElement("p");
+        dayWind.setAttribute("id", "futureWind");
+        dailyWeather.append(dayWind);
+        dayWind.innerHTML = "testWind";
+
+        var dayHumid = document.createElement("p");
+        dayHumid.setAttribute("id", "futureHumidity");
+        dailyWeather.append(dayHumid);
+        dayHumid.innerHTML = "testHum";
 
 
-
+        // futureTemperature.innerHTML
+        //  futureWind.innerHTML
+        // futureHumidity.innerHTML
     }
 }
 
