@@ -81,10 +81,15 @@ function getFiveDayCity(latitude, longitude) {
 // Function to get the data from the next five day forecast and append it to the cards
 function getFiveDayForecast(data) {
     console.log(data)
+    console.log(data.daily[1])
 
     var futureForecast = document.getElementById("future-forecast");
 
     for (let i = 1; i < 6; i++) {
+
+        var avgTemp = data.daily[i].temp.day;
+        var avgWind = data.daily[i].wind_speed;
+        var avgHumidity = data.daily[i].humidity;
 
         var date = moment().add(+i, 'days').format('DD-MM-YY');
         console.log(date)
@@ -117,9 +122,7 @@ function getFiveDayForecast(data) {
         dayHumid.innerHTML = "Humidity: " + avgHumidity + "%";
 
 
-        var avgTemp = data.daily[i].temp.day;
-        var avgWind = data.daily[i].wind_speed;
-        var avgHumidity = data.daily[i].humidity;
+
     }
 }
 
