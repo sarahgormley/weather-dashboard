@@ -3,6 +3,8 @@
 
 ![GitHub](https://img.shields.io/badge/license-Apache-yellow.svg)
 
+[Website Live URL](https://sarahgormley.github.io/weather-dashboard/)
+
 ## Table Of Contents
 * [Description](#description)
 * [Installation](#installation)
@@ -42,3 +44,7 @@ To contribute to this project, please Email me :) See below.
 For questions and comments related to this repository, please email me at: sarah.gormley39@gmail.com. Alternatively, view my other projects at [sarahgormley](https://github.com/sarahgormley).
 
 ## Screenshots 
+![Screenshot 1](./Assets/Images/Screen%20Shot%202022-06-20%20at%2012.34.59%20pm.png)
+
+![Screenshot 2](./Assets/Images/Screen%20Shot%202022-06-20%20at%2012.35.16%20pm.png)
+
