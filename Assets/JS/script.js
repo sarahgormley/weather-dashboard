@@ -25,6 +25,7 @@ function pageinit() {
 // Event listener for search button. Adds the value of the searched city into the getCity function
 searchBtn.addEventListener('click', function() {
     getCity(cityName.value)
+    event.preventDefault();
 
 })
 
